@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Votre plan pour attirer des lecteurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F3EFE9;--sheet:#FBF9F6;--ink:#2B2622;--taupe:#7C7065;--line:#DDD5CA;--brass:#9C7A34;--serif:"Source Serif 4",Georgia,"Times New Roman",serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:820px;margin:0 auto;padding:40px 24px 32px}
+h1{font-size:clamp(30px,4.6vw,42px);line-height:1.1;margin:0 0 14px}
+.lede{color:var(--taupe);font-size:18px;margin:0 0 8px}
+.how{font-size:15px;color:var(--taupe);margin:0 0 26px}
+.card{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin:0 0 18px}
+fieldset{border:0;margin:0;padding:12px 0;border-top:1px solid var(--line)}
+fieldset:first-of-type{border-top:0;padding-top:0}
+legend{font-weight:600;font-size:17px;padding:0;margin-bottom:8px;float:left;width:100%}
+.help{clear:both;font-size:14px;color:var(--taupe);margin:0 0 8px}
+.choices{clear:both;display:flex;flex-wrap:wrap;gap:8px}
+.choices label{display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:4px;padding:6px 11px;font-size:15px;cursor:pointer;background:#fff}
+.choices input{accent-color:var(--brass);margin:0}
+.choices label:has(input:checked){border-color:var(--ink);background:#F1ECE4}
+.btn{font:inherit;font-size:16px;border-radius:4px;padding:10px 18px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.missing{font-size:14px;color:var(--taupe);margin:10px 0 0}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+#plan h2{font-size:26px;margin:0 0 6px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+.num{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step.pre .num{background:var(--brass)}
+.step h3{margin:0 0 4px;font-size:19px}
+.step p{margin:0 0 6px}
+.meta{font-size:14px;color:var(--taupe)}
+.meta b{color:var(--ink);font-weight:600}
+.aside{margin-top:22px;padding-top:14px;border-top:2px solid var(--ink)}
+.aside h3{margin:0 0 8px;font-size:19px}
+.aside ul{margin:0;padding-left:20px}
+.aside li{margin:0 0 6px}
+.cta{background:var(--ink);color:#fff;border-radius:6px;padding:20px 22px;margin-top:24px}
+.cta p{margin:0 0 10px;color:#E8E1D6}
+.cta a{color:#fff;font-weight:600}
+a{color:var(--brass)}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--taupe)}
+.copy{font-size:12.5px}
+@media print{.nav,.noprint{display:none!important}body{background:#fff}.cta{background:#fff;color:#000;border:1px solid #000}.cta p,.cta a{color:#000}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Votre plan pour attirer des lecteurs</h1>
+  <p class="lede">Sept questions, deux minutes, et un plan d'action dans l'ordre, adapté à votre budget, à votre temps et à votre genre.</p>
+  <p class="how">Ce plan accompagne le guide « Attirer des lecteurs avec un petit budget », qui détaille chaque stratégie. Aucune donnée n'est enregistrée ni transmise.</p>
+</header>
+
+<main id="app">
+<form class="card" id="form" onsubmit="return false">
+  <fieldset>
+    <legend>1. Avez-vous vérifié la vitrine de votre livre ?</legend>
+    <p class="help">La vitrine, c'est tout ce qu'un lecteur voit avant d'acheter : couverture, titre, quatrième de couverture, prix, fiche sur les sites de vente avec son extrait. L'avez-vous vérifiée point par point ?</p>
+    <div class="choices" data-q="vitrine">
+      <label><input type="radio" name="vitrine" value="oui">Oui, point par point</label>
+      <label><input type="radio" name="vitrine" value="partie">En partie</label>
+      <label><input type="radio" name="vitrine" value="non">Non</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>2. Quel budget pouvez-vous y consacrer ?</legend>
+    <div class="choices" data-q="budget">
+      <label><input type="radio" name="budget" value="0">Aucun</label>
+      <label><input type="radio" name="budget" value="50">Moins de 50 €</label>
+      <label><input type="radio" name="budget" value="300">Jusqu'à 300 €</label>
+      <label><input type="radio" name="budget" value="plus">Davantage</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>3. Combien de temps par semaine, dans la durée ?</legend>
+    <div class="choices" data-q="temps">
+      <label><input type="radio" name="temps" value="1">Moins d'une heure</label>
+      <label><input type="radio" name="temps" value="3">Une à trois heures</label>
+      <label><input type="radio" name="temps" value="plus">Plus de trois heures</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>4. Quel est le genre de votre livre ?</legend>
+    <div class="choices" data-q="genre">
+      <label><input type="radio" name="genre" value="romance">Romance, romantasy, young adult</label>
+      <label><input type="radio" name="genre" value="imaginaire">Fantasy, science-fiction</label>
+      <label><input type="radio" name="genre" value="noir">Polar, thriller</label>
+      <label><input type="radio" name="genre" value="generale">Littérature générale</label>
+      <label><input type="radio" name="genre" value="terroir">Terroir, saga, roman historique</label>
+      <label><input type="radio" name="genre" value="jeunesse">Jeunesse</label>
+      <label><input type="radio" name="genre" value="essai">Essai, livre pratique</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>5. Où est publié votre livre ?</legend>
+    <div class="choices" data-q="plateforme">
+      <label><input type="radio" name="plateforme" value="kdp">Sur Amazon KDP</label>
+      <label><input type="radio" name="plateforme" value="autre">Sur une autre plateforme</label>
+      <label><input type="radio" name="plateforme" value="deux">Les deux</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>6. Pouvez-vous vous déplacer pour rencontrer des lecteurs ?</legend>
+    <p class="help">Librairies, médiathèques, salons de votre région.</p>
+    <div class="choices" data-q="local">
+      <label><input type="radio" name="local" value="oui">Oui</label>
+      <label><input type="radio" name="local" value="peu">Un peu</label>
+      <label><input type="radio" name="local" value="non">Non</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>7. S'agit-il d'un premier livre ou d'une série ?</legend>
+    <div class="choices" data-q="serie">
+      <label><input type="radio" name="serie" value="seul">Un livre seul</label>
+      <label><input type="radio" name="serie" value="serie">Une série ou plusieurs livres</label>
+    </div>
+  </fieldset>
+  <div class="nav">
+    <button class="btn" type="button" id="go" disabled>Voir mon plan</button>
+  </div>
+  <p class="missing" id="missing">Répondez aux sept questions pour obtenir votre plan.</p>
+</form>
+</main>
+
+<footer>
+  <p>Ce plan propose un ordre de priorité, pas une garantie de résultat : l'effet de chaque action dépend du livre, du genre et de la régularité de l'auteur.</p>
+  <p class="copy">© 2026 Louis-Xavier Babin-Lachaud — <a href="https://www.ecrivain-service.fr/">ecrivain-service.fr</a>. Partage autorisé tel quel, modification et usage commercial interdits sans accord.</p>
+</footer>
+</div>
+
+<script>
+const RESSOURCES = "https://www.ecrivain-service.fr/ressources";
+const AUTODIAG = "https://autodiagnostic-vitrine.vercel.app";
+const QUESTIONS = ["vitrine","budget","temps","genre","plateforme","local","serie"];
+const $ = s => document.querySelector(s);
+const val = q => { const el = document.querySelector('input[name="'+q+'"]:checked'); return el ? el.value : null; };
+
+const FORM_HTML = $("#app").innerHTML;
+function majEtat(){
+  const manquantes = QUESTIONS.filter(q => !val(q)).length;
+  $("#go").disabled = manquantes > 0;
+  $("#missing").textContent = manquantes ? "Encore " + manquantes + " question" + (manquantes>1?"s":"") + " pour obtenir votre plan." : "Votre plan est prêt.";
+}
+function lier(){
+  document.querySelectorAll('input[type=radio]').forEach(r => r.addEventListener('change', majEtat));
+  $("#go").onclick = render;
+}
+
+function reseau(genre, temps){
+  if (temps === "1") return null;
+  const t = temps === "plus";
+  switch(genre){
+    case "romance": return t ? {nom:"TikTok", pourquoi:"BookTok est le réseau le plus puissant pour faire découvrir la romance, la romantasy et le young adult. Il demande des vidéos courtes et fréquentes."}
+                             : {nom:"Instagram", pourquoi:"Avec moins de trois heures par semaine, Instagram est plus tenable que TikTok, et la communauté Bookstagram y est très active dans votre genre."};
+    case "imaginaire": return t ? {nom:"Instagram ou YouTube", pourquoi:"L'imaginaire a de fortes communautés sur Bookstagram et BookTube. YouTube demande des vidéos longues, mais son effet est plus durable."}
+                                : {nom:"Instagram", pourquoi:"La communauté Bookstagram est active en imaginaire, et c'est aussi la porte d'entrée des services de presse."};
+    case "noir": return {nom:"Instagram", pourquoi:"Le polar et le thriller ont une communauté de chroniqueurs très active sur Instagram, souvent liée à des blogs."};
+    case "generale": return {nom:"Instagram", pourquoi:"Pour la littérature générale, Bookstagram rassemble les lecteurs et les chroniqueurs les plus réceptifs."};
+    case "terroir": return {nom:"Facebook", pourquoi:"Le lectorat du roman de terroir, de la saga et du roman historique se retrouve souvent dans les groupes de lecteurs Facebook, à condition d'y participer sincèrement."};
+    case "jeunesse": return {nom:"Instagram", pourquoi:"En jeunesse, ce sont les parents, les enseignants et les bibliothécaires qu'il faut toucher, et ils sont nombreux sur Instagram."};
+    case "essai": return {nom:"LinkedIn", pourquoi:"Pour un essai ou un livre pratique lié à un métier, LinkedIn touche directement le public concerné et met votre expertise en avant."};
+  }
+}
+
+function plan(){
+  const v = {}; QUESTIONS.forEach(q => v[q] = val(q));
+  const steps = [];
+  const amazon = v.plateforme !== "autre";
+
+  if (v.vitrine !== "oui") steps.push({pre:true, titre:"Vérifier votre vitrine",
+    texte:"La vitrine, c'est tout ce qu'un lecteur voit avant d'acheter : couverture, titre, quatrième, prix, fiche en ligne et extrait. Toutes les actions qui suivent amènent des lecteurs jusqu'à elle, et s'ils n'y trouvent pas de quoi les retenir, vos efforts seront perdus. Commencez par là.",
+    meta:["gratuit","un quart d'heure","condition de tout le reste"], lien:[AUTODIAG,"Faire l'autodiagnostic de vitrine"]});
+
+  if (amazon) steps.push({titre:"Régler votre fiche en ligne", texte:"Choisissez vos trois catégories en regardant celles des livres comparables, renseignez les sept mots-clés, et complétez votre page auteur. Ce réglage se fait une fois et travaille ensuite seul.",
+    meta:["gratuit","une demi-journée","permanent"]});
+
+  steps.push({titre:"Proposer votre livre à des chroniqueurs", texte:"Ciblez des chroniqueurs qui lisent votre genre et acceptent l'autoédition, et vérifiez le format qu'ils acceptent avant d'envoyer." + (v.budget === "0" ? " Sans budget, privilégiez ceux qui acceptent l'ebook." : " Prévoyez quelques exemplaires papier pour ceux qui ne lisent qu'en papier."),
+    meta:[v.budget === "0" ? "gratuit en numérique" : "quelques exemplaires et le port","quelques heures","lent, durable"]});
+
+  const r = reseau(v.genre, v.temps);
+  if (r) steps.push({titre:"Vous installer sur un seul réseau : " + r.nom, texte:r.pourquoi + " Parlez de ce qui entoure le livre bien plus souvent que du livre lui-même, et tenez la régularité.",
+    meta:["gratuit", v.temps === "plus" ? "plus de trois heures par semaine" : "une à trois heures par semaine","lent au début, puissant si l'on tient"]});
+
+  if (v.local !== "non") steps.push({titre:"Aller vers les lecteurs de votre région", texte:"Présentez-vous aux librairies indépendantes, qui acceptent souvent les auteurs locaux en dépôt-vente, et proposez une rencontre aux médiathèques. Envoyez un communiqué d'une page à la presse locale." + (v.genre === "jeunesse" ? " En jeunesse, pensez aussi aux écoles." : ""),
+    meta:["gratuit, hors exemplaires", v.local === "oui" ? "quelques demi-journées" : "une ou deux démarches","local, durable"]});
+
+  if (v.local === "oui" && v.budget !== "0") steps.push({titre:"Faire un premier salon", texte:"Choisissez un salon de votre région qui accueille les autoédités, et demandez avant de réserver le coût du stand, le public attendu et qui vend les livres. Faites imprimer vos exemplaires en nombre plutôt qu'à l'unité.",
+    meta:["de quelques dizaines à quelques centaines d'euros","un week-end, plus la préparation","immédiat, local"]});
+
+  steps.push({titre:"Ouvrir une liste de lecteurs par courriel", texte: v.serie === "serie"
+      ? "Pour une série, c'est l'action la plus rentable à terme : chaque lecteur inscrit sera prévenu du tome suivant. Placez l'adresse d'inscription à la dernière page de chaque livre."
+      : "Même pour un livre seul, elle prépare le suivant. Placez l'adresse d'inscription à la dernière page du livre, sur votre site et sur votre réseau.",
+    meta:["gratuit au début","faible","décisif pour les livres suivants"]});
+
+  if ((v.plateforme === "kdp") && v.serie === "serie") steps.push({titre:"Offrir le premier tome quelques jours", texte:"Avec KDP Select, l'ebook peut être offert jusqu'à cinq jours par période de 90 jours, en échange d'une exclusivité numérique sur Amazon. Pour une série, le premier tome offert mène aux suivants.",
+    meta:["gratuit, mais exclusivité numérique","faible","pic immédiat, bref"]});
+
+  if (amazon && (v.budget === "300" || v.budget === "plus") && v.vitrine === "oui") steps.push({titre:"Tester la publicité sur Amazon", texte:"Commencez petit, suivez vos campagnes de près, et arrêtez celles qui ne rapportent rien. La publicité amplifie ce qui fonctionne déjà : elle n'est rentable que si la vitrine convertit.",
+    meta:["à partir de quelques euros par jour","suivi régulier","immédiat, à surveiller"]});
+
+  steps.push({titre:"Repérer les prix et concours ouverts aux autoédités", texte:"Peu nombreux, mais gratuits ou presque. Vérifiez toujours le règlement, et méfiez-vous des concours dont le prix consiste à vous vendre des prestations.",
+    meta:["gratuit ou quelques euros","faible","rare mais fort"]});
+
+  return {v, steps, r};
+}
+
+function render(){
+  const {v, steps, r} = plan();
+  window._reponses = v;
+  let h = '<section class="card" id="plan"><h2>Votre plan, dans l\'ordre</h2>';
+  h += '<p class="meta">Une étape à la fois : observez vos ventes avant de passer à la suivante.</p>';
+  steps.forEach((s,i) => {
+    h += '<div class="step'+(s.pre?' pre':'')+'"><div class="num">'+(s.pre?'!':(i+(steps[0].pre?0:1)))+'</div><div><h3>'+s.titre+'</h3><p>'+s.texte+'</p>';
+    h += '<p class="meta"><b>Coût</b> '+s.meta[0]+' &nbsp;·&nbsp; <b>Temps</b> '+s.meta[1]+' &nbsp;·&nbsp; <b>Effet</b> '+s.meta[2]+'</p>';
+    if (s.lien) h += '<p><a href="'+s.lien[0]+'" target="_blank" rel="noopener">'+s.lien[1]+'</a></p>';
+    h += '</div></div>';
+  });
+  h += '<div class="aside"><h3>En parallèle, si vous le souhaitez</h3><ul>';
+  h += '<li>Les forums et groupes d\'écrivains rapportent peu de lecteurs, mais beaucoup d\'entraide. N\'y échangez jamais d\'avis entre auteurs : Amazon l\'interdit.</li>';
+  if (!r) h += '<li>Avec moins d\'une heure par semaine, mieux vaut vous passer des réseaux sociaux que d\'y être irrégulier.</li>';
+  h += '<li>N\'achetez ni avis, ni abonnés, ni « packs de visibilité » qui promettent des ventes.</li></ul></div>';
+  h += '<div class="cta"><p>Chaque étape est détaillée dans le guide « Attirer des lecteurs avec un petit budget », avec les ressources qui l\'accompagnent : liste des chroniqueurs, prix et salons, boîte à outils.</p><a href="'+RESSOURCES+'" target="_blank" rel="noopener">Ouvrir la page Ressources</a></div>';
+  h += '<div class="nav noprint"><button class="btn ghost" type="button" id="back">Modifier mes réponses</button><button class="btn" type="button" id="print">Imprimer mon plan</button></div></section>';
+  $("#app").innerHTML = h;
+  $("#back").onclick = () => {
+    $("#app").innerHTML = FORM_HTML; lier();
+    Object.entries(window._reponses).forEach(([q,x]) => { const el = document.querySelector('input[name="'+q+'"][value="'+x+'"]'); if (el) el.checked = true; });
+    majEtat(); window.scrollTo({top:0, behavior:"smooth"});
+  };
+  $("#print").onclick = () => window.print();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+lier();
+</script>
+</body>
+</html>
