@@ -55,7 +55,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
 <div class="wrap">
 <header>
   <h1>Votre plan pour attirer des lecteurs</h1>
-  <p class="lede">Sept questions, deux minutes, et un plan d'action dans l'ordre, adapté à votre budget, à votre temps et à votre genre.</p>
+  <p class="lede">Huit questions, deux minutes, et un plan d'action dans l'ordre, adapté à votre budget, à votre temps et à votre genre.</p>
   <p class="how">Ce plan accompagne le guide « Attirer des lecteurs avec un petit budget », qui détaille chaque stratégie. Aucune donnée n'est enregistrée ni transmise.</p>
 </header>
 
@@ -123,10 +123,18 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
       <label><input type="radio" name="serie" value="serie">Une série ou plusieurs livres</label>
     </div>
   </fieldset>
+  <fieldset>
+    <legend>8. Où en est votre livre ?</legend>
+    <div class="choices" data-q="sortie">
+      <label><input type="radio" name="sortie" value="avant">Il n'est pas encore sorti</label>
+      <label><input type="radio" name="sortie" value="recent">Sorti depuis moins de six mois</label>
+      <label><input type="radio" name="sortie" value="ancien">Sorti depuis plus de six mois</label>
+    </div>
+  </fieldset>
   <div class="nav">
     <button class="btn" type="button" id="go" disabled>Voir mon plan</button>
   </div>
-  <p class="missing" id="missing">Répondez aux sept questions pour obtenir votre plan.</p>
+  <p class="missing" id="missing">Répondez aux huit questions pour obtenir votre plan.</p>
 </form>
 </main>
 
@@ -139,7 +147,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
 <script>
 const RESSOURCES = "https://www.ecrivain-service.fr/ressources";
 const AUTODIAG = "https://autodiagnostic-vitrine.vercel.app";
-const QUESTIONS = ["vitrine","budget","temps","genre","plateforme","local","serie"];
+const QUESTIONS = ["vitrine","budget","temps","genre","plateforme","local","serie","sortie"];
 const $ = s => document.querySelector(s);
 const val = q => { const el = document.querySelector('input[name="'+q+'"]:checked'); return el ? el.value : null; };
 
@@ -179,10 +187,12 @@ function plan(){
     texte:"La vitrine, c'est tout ce qu'un lecteur voit avant d'acheter : couverture, titre, quatrième, prix, fiche en ligne et extrait. Toutes les actions qui suivent amènent des lecteurs jusqu'à elle, et s'ils n'y trouvent pas de quoi les retenir, vos efforts seront perdus. Commencez par là.",
     meta:["gratuit","un quart d'heure","condition de tout le reste"], lien:[AUTODIAG,"Faire l'autodiagnostic de vitrine"]});
 
+  if (v.sortie === "ancien") steps.push({titre:"Rafraîchir votre vitrine avec du recul", texte:"Quelques mois après la sortie, relisez votre description, revoyez vos catégories et vos mots-clés, et interrogez-vous sur la couverture et le prix. C'est souvent le premier levier pour relancer un livre, et le moins coûteux.",
+    meta:["gratuit, sauf nouvelle couverture","quelques heures","durable"], lien:[AUTODIAG,"Refaire l'autodiagnostic de vitrine"]});
   if (amazon) steps.push({titre:"Régler votre fiche en ligne", texte:"Choisissez vos trois catégories en regardant celles des livres comparables, renseignez les sept mots-clés, et complétez votre page auteur. Ce réglage se fait une fois et travaille ensuite seul.",
     meta:["gratuit","une demi-journée","permanent"]});
 
-  steps.push({titre:"Proposer votre livre à des chroniqueurs", texte:"Ciblez des chroniqueurs qui lisent votre genre et acceptent l'autoédition, et vérifiez le format qu'ils acceptent avant d'envoyer." + (v.budget === "0" ? " Sans budget, privilégiez ceux qui acceptent l'ebook." : " Prévoyez quelques exemplaires papier pour ceux qui ne lisent qu'en papier."),
+  steps.push({titre: v.sortie === "ancien" ? "Proposer votre livre à de nouveaux chroniqueurs" : "Proposer votre livre à des chroniqueurs", texte:(v.sortie === "avant" ? "Envoyez vos services de presse un à deux mois avant la sortie, pour que les chroniques paraissent au moment du lancement. " : v.sortie === "ancien" ? "D'autres chroniqueurs de votre genre ne connaissent pas encore votre livre. " : "") + "Ciblez des chroniqueurs qui lisent votre genre et acceptent l'autoédition, et vérifiez le format qu'ils acceptent avant d'envoyer." + (v.budget === "0" ? " Sans budget, privilégiez ceux qui acceptent l'ebook." : " Prévoyez quelques exemplaires papier pour ceux qui ne lisent qu'en papier."),
     meta:[v.budget === "0" ? "gratuit en numérique" : "quelques exemplaires et le port","quelques heures","lent, durable"]});
 
   const r = reseau(v.genre, v.temps);
@@ -195,6 +205,8 @@ function plan(){
   if (v.local === "oui" && v.budget !== "0") steps.push({titre:"Faire un premier salon", texte:"Choisissez un salon de votre région qui accueille les autoédités, et demandez avant de réserver le coût du stand, le public attendu et qui vend les livres. Faites imprimer vos exemplaires en nombre plutôt qu'à l'unité.",
     meta:["de quelques dizaines à quelques centaines d'euros","un week-end, plus la préparation","immédiat, local"]});
 
+  if (v.sortie === "ancien") steps.push({titre:"Saisir un moment pour relancer le livre", texte:"Une saison qui correspond à votre genre, les fêtes de fin d'année, une actualité liée à votre sujet, un salon : chaque moment est une raison nouvelle d'en parler. Accompagnez-le, si vous le souhaitez, d'une baisse de prix de quelques jours, annoncée à l'avance.",
+    meta:["gratuit, ou une part de vos redevances","faible, si l'on s'y prend tôt","ponctuel"]});
   steps.push({titre:"Ouvrir une liste de lecteurs par courriel", texte: v.serie === "serie"
       ? "Pour une série, c'est l'action la plus rentable à terme : chaque lecteur inscrit sera prévenu du tome suivant. Placez l'adresse d'inscription à la dernière page de chaque livre."
       : "Même pour un livre seul, elle prépare le suivant. Placez l'adresse d'inscription à la dernière page du livre, sur votre site et sur votre réseau.",
@@ -206,6 +218,8 @@ function plan(){
   if (amazon && (v.budget === "300" || v.budget === "plus") && v.vitrine === "oui") steps.push({titre:"Tester la publicité sur Amazon", texte:"Commencez petit, suivez vos campagnes de près, et arrêtez celles qui ne rapportent rien. La publicité amplifie ce qui fonctionne déjà : elle n'est rentable que si la vitrine convertit.",
     meta:["à partir de quelques euros par jour","suivi régulier","immédiat, à surveiller"]});
 
+  if (v.sortie === "ancien") steps.push({titre:"Préparer le livre suivant", texte:"C'est le meilleur moyen de relancer le premier : chaque nouveau livre renvoie des lecteurs vers les précédents. Mentionnez vos autres livres à la fin de chacun, et prévenez votre liste de lecteurs à chaque parution.",
+    meta:["celui du livre","celui de l'écriture","le plus durable de tous"]});
   steps.push({titre:"Repérer les prix et concours ouverts aux autoédités", texte:"Peu nombreux, mais gratuits ou presque. Vérifiez toujours le règlement, et méfiez-vous des concours dont le prix consiste à vous vendre des prestations.",
     meta:["gratuit ou quelques euros","faible","rare mais fort"]});
 
