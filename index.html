@@ -55,14 +55,23 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
 <div class="wrap">
 <header>
   <h1>Votre plan pour attirer des lecteurs</h1>
-  <p class="lede">Huit questions, deux minutes, et un plan d'action dans l'ordre, adapté à votre budget, à votre temps et à votre genre.</p>
-  <p class="how">Ce plan accompagne le guide « Attirer des lecteurs avec un petit budget », qui détaille chaque stratégie. Aucune donnée n'est enregistrée ni transmise.</p>
+  <p class="lede">Sept questions au plus, deux minutes, et un plan d'action dans l'ordre, adapté à votre budget, à votre temps et à votre genre.</p>
+  <p class="how">Ce plan accompagne le guide « Attirer des lecteurs avec un petit budget », qui détaille chaque stratégie. Il convient aux livres autoédités comme à ceux publiés par une maison d'édition. Aucune donnée n'est enregistrée ni transmise.</p>
 </header>
 
 <main id="app">
 <form class="card" id="form" onsubmit="return false">
   <fieldset>
-    <legend>1. Avez-vous vérifié la vitrine de votre livre ?</legend>
+    <legend>1. Comment votre livre est-il publié ?</legend>
+    <div class="choices" data-q="plateforme">
+      <label><input type="radio" name="plateforme" value="kdp">En autoédition, sur Amazon KDP</label>
+      <label><input type="radio" name="plateforme" value="autre">En autoédition, sur une autre plateforme</label>
+      <label><input type="radio" name="plateforme" value="deux">Sur KDP et sur une autre plateforme</label>
+      <label><input type="radio" name="plateforme" value="maison">Par une maison d'édition</label>
+    </div>
+  </fieldset>
+  <fieldset id="fs-vitrine">
+    <legend>2. Avez-vous vérifié la vitrine de votre livre ?</legend>
     <p class="help">La vitrine, c'est tout ce qu'un lecteur voit avant d'acheter : couverture, titre, quatrième de couverture, prix, fiche sur les sites de vente avec son extrait. L'avez-vous vérifiée point par point ?</p>
     <div class="choices" data-q="vitrine">
       <label><input type="radio" name="vitrine" value="oui">Oui, point par point</label>
@@ -71,7 +80,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
     </div>
   </fieldset>
   <fieldset>
-    <legend>2. Quel budget pouvez-vous y consacrer ?</legend>
+    <legend>3. Quel budget pouvez-vous y consacrer ?</legend>
     <div class="choices" data-q="budget">
       <label><input type="radio" name="budget" value="0">Aucun</label>
       <label><input type="radio" name="budget" value="50">Moins de 50 €</label>
@@ -80,7 +89,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
     </div>
   </fieldset>
   <fieldset>
-    <legend>3. Combien de temps par semaine, dans la durée ?</legend>
+    <legend>4. Combien de temps par semaine, dans la durée ?</legend>
     <div class="choices" data-q="temps">
       <label><input type="radio" name="temps" value="1">Moins d'une heure</label>
       <label><input type="radio" name="temps" value="3">Une à trois heures</label>
@@ -88,7 +97,7 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
     </div>
   </fieldset>
   <fieldset>
-    <legend>4. Quel est le genre de votre livre ?</legend>
+    <legend>5. Quel est le genre de votre livre ?</legend>
     <div class="choices" data-q="genre">
       <label><input type="radio" name="genre" value="romance">Romance, romantasy, young adult</label>
       <label><input type="radio" name="genre" value="imaginaire">Fantasy, science-fiction</label>
@@ -97,14 +106,6 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
       <label><input type="radio" name="genre" value="terroir">Terroir, saga, roman historique</label>
       <label><input type="radio" name="genre" value="jeunesse">Jeunesse</label>
       <label><input type="radio" name="genre" value="essai">Essai, livre pratique</label>
-    </div>
-  </fieldset>
-  <fieldset>
-    <legend>5. Où est publié votre livre ?</legend>
-    <div class="choices" data-q="plateforme">
-      <label><input type="radio" name="plateforme" value="kdp">Sur Amazon KDP</label>
-      <label><input type="radio" name="plateforme" value="autre">Sur une autre plateforme</label>
-      <label><input type="radio" name="plateforme" value="deux">Les deux</label>
     </div>
   </fieldset>
   <fieldset>
@@ -123,18 +124,10 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
       <label><input type="radio" name="serie" value="serie">Une série ou plusieurs livres</label>
     </div>
   </fieldset>
-  <fieldset>
-    <legend>8. Où en est votre livre ?</legend>
-    <div class="choices" data-q="sortie">
-      <label><input type="radio" name="sortie" value="avant">Il n'est pas encore sorti</label>
-      <label><input type="radio" name="sortie" value="recent">Sorti depuis moins de six mois</label>
-      <label><input type="radio" name="sortie" value="ancien">Sorti depuis plus de six mois</label>
-    </div>
-  </fieldset>
   <div class="nav">
     <button class="btn" type="button" id="go" disabled>Voir mon plan</button>
   </div>
-  <p class="missing" id="missing">Répondez aux huit questions pour obtenir votre plan.</p>
+  <p class="missing" id="missing">Répondez aux questions pour obtenir votre plan.</p>
 </form>
 </main>
 
@@ -147,12 +140,17 @@ footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--line);font-si
 <script>
 const RESSOURCES = "https://www.ecrivain-service.fr/ressources";
 const AUTODIAG = "https://autodiagnostic-vitrine.vercel.app";
-const QUESTIONS = ["vitrine","budget","temps","genre","plateforme","local","serie","sortie"];
+const QUESTIONS = ["plateforme","vitrine","budget","temps","genre","local","serie"];
 const $ = s => document.querySelector(s);
-const val = q => { const el = document.querySelector('input[name="'+q+'"]:checked'); return el ? el.value : null; };
+const val = q => {
+  if (q === "vitrine" && maison()) return "na";
+  const el = document.querySelector('input[name="'+q+'"]:checked'); return el ? el.value : null; };
+function maison(){ const el = document.querySelector('input[name="plateforme"]:checked'); return !!el && el.value === "maison"; }
 
 const FORM_HTML = $("#app").innerHTML;
 function majEtat(){
+  const fs = document.getElementById("fs-vitrine"); if (fs) fs.style.display = maison() ? "none" : "";
+  let n = 0; document.querySelectorAll("#form fieldset").forEach(f => { if (f.style.display === "none") return; n++; const lg = f.querySelector("legend"); lg.textContent = lg.textContent.replace(/^\d+\./, n + "."); });
   const manquantes = QUESTIONS.filter(q => !val(q)).length;
   $("#go").disabled = manquantes > 0;
   $("#missing").textContent = manquantes ? "Encore " + manquantes + " question" + (manquantes>1?"s":"") + " pour obtenir votre plan." : "Votre plan est prêt.";
@@ -181,32 +179,35 @@ function reseau(genre, temps){
 function plan(){
   const v = {}; QUESTIONS.forEach(q => v[q] = val(q));
   const steps = [];
-  const amazon = v.plateforme !== "autre";
+  const ed = v.plateforme === "maison";
+  const amazon = v.plateforme === "kdp" || v.plateforme === "deux";
+  if (ed) steps.push({titre:"Parler avec votre éditeur avant la sortie", texte:"Le partage des rôles entre l'éditeur et l'auteur est rarement écrit. Demandez-lui qui diffuse le livre auprès des libraires, combien de services de presse sont prévus et pour qui, à quels salons il compte aller, à quel prix vous pouvez acheter des exemplaires, et ce que vous pouvez annoncer, et quand. La vitrine du livre, son prix et la publicité dépendent de lui, pas de vous.",
+    meta:["gratuit","une heure d'échange","évite les doublons et les oublis"], lien:[RESSOURCES,"Lire le guide « Votre livre sort : ce qui dépend de vous »"]});
 
-  if (v.vitrine !== "oui") steps.push({pre:true, titre:"Vérifier votre vitrine",
+  if (!ed && v.vitrine !== "oui") steps.push({pre:true, titre:"Vérifier votre vitrine",
     texte:"La vitrine, c'est tout ce qu'un lecteur voit avant d'acheter : couverture, titre, quatrième, prix, fiche en ligne et extrait. Toutes les actions qui suivent amènent des lecteurs jusqu'à elle, et s'ils n'y trouvent pas de quoi les retenir, vos efforts seront perdus. Commencez par là.",
     meta:["gratuit","un quart d'heure","condition de tout le reste"], lien:[AUTODIAG,"Faire l'autodiagnostic de vitrine"]});
 
-  if (v.sortie === "ancien") steps.push({titre:"Rafraîchir votre vitrine avec du recul", texte:"Quelques mois après la sortie, relisez votre description, revoyez vos catégories et vos mots-clés, et interrogez-vous sur la couverture et le prix. C'est souvent le premier levier pour relancer un livre, et le moins coûteux.",
-    meta:["gratuit, sauf nouvelle couverture","quelques heures","durable"], lien:[AUTODIAG,"Refaire l'autodiagnostic de vitrine"]});
   if (amazon) steps.push({titre:"Régler votre fiche en ligne", texte:"Choisissez vos trois catégories en regardant celles des livres comparables, renseignez les sept mots-clés, et complétez votre page auteur. Ce réglage se fait une fois et travaille ensuite seul.",
     meta:["gratuit","une demi-journée","permanent"]});
 
-  steps.push({titre: v.sortie === "ancien" ? "Proposer votre livre à de nouveaux chroniqueurs" : "Proposer votre livre à des chroniqueurs", texte:(v.sortie === "avant" ? "Envoyez vos services de presse un à deux mois avant la sortie, pour que les chroniques paraissent au moment du lancement. " : v.sortie === "ancien" ? "D'autres chroniqueurs de votre genre ne connaissent pas encore votre livre. " : "") + "Ciblez des chroniqueurs qui lisent votre genre et acceptent l'autoédition, et vérifiez le format qu'ils acceptent avant d'envoyer." + (v.budget === "0" ? " Sans budget, privilégiez ceux qui acceptent l'ebook." : " Prévoyez quelques exemplaires papier pour ceux qui ne lisent qu'en papier."),
-    meta:[v.budget === "0" ? "gratuit en numérique" : "quelques exemplaires et le port","quelques heures","lent, durable"]});
+  steps.push({titre:"Proposer votre livre à des chroniqueurs", texte: ed ? "Ciblez des chroniqueurs qui lisent votre genre, et transmettez la liste à votre éditeur, qui enverra peut-être lui-même les services de presse. Pour les autres, prévoyez quelques exemplaires d'auteur."
+      : "Ciblez des chroniqueurs qui lisent votre genre et acceptent l'autoédition, et vérifiez le format qu'ils acceptent avant d'envoyer." + (v.budget === "0" ? " Sans budget, privilégiez ceux qui acceptent l'ebook." : " Prévoyez quelques exemplaires papier pour ceux qui ne lisent qu'en papier."),
+    meta:[ed ? "quelques exemplaires d'auteur" : (v.budget === "0" ? "gratuit en numérique" : "quelques exemplaires et le port"),"quelques heures","lent, durable"]});
 
   const r = reseau(v.genre, v.temps);
   if (r) steps.push({titre:"Vous installer sur un seul réseau : " + r.nom, texte:r.pourquoi + " Parlez de ce qui entoure le livre bien plus souvent que du livre lui-même, et tenez la régularité.",
     meta:["gratuit", v.temps === "plus" ? "plus de trois heures par semaine" : "une à trois heures par semaine","lent au début, puissant si l'on tient"]});
 
-  if (v.local !== "non") steps.push({titre:"Aller vers les lecteurs de votre région", texte:"Présentez-vous aux librairies indépendantes, qui acceptent souvent les auteurs locaux en dépôt-vente, et proposez une rencontre aux médiathèques. Envoyez un communiqué d'une page à la presse locale." + (v.genre === "jeunesse" ? " En jeunesse, pensez aussi aux écoles." : ""),
+  if (v.local !== "non") steps.push({titre:"Aller vers les lecteurs de votre région", texte:(ed ? "Votre livre peut être commandé par les libraires, encore faut-il qu'ils le connaissent. Présentez-vous aux librairies de votre région avec un exemplaire et une fiche d'une page, et proposez-leur une rencontre ou une dédicace. Faites de même avec les médiathèques, et signalez votre livre à la presse locale, en accord avec votre éditeur."
+      : "Présentez-vous aux librairies indépendantes, qui acceptent souvent les auteurs locaux en dépôt-vente, et proposez une rencontre aux médiathèques. Envoyez un communiqué d'une page à la presse locale.") + (v.genre === "jeunesse" ? " En jeunesse, pensez aussi aux écoles." : ""),
     meta:["gratuit, hors exemplaires", v.local === "oui" ? "quelques demi-journées" : "une ou deux démarches","local, durable"]});
 
-  if (v.local === "oui" && v.budget !== "0") steps.push({titre:"Faire un premier salon", texte:"Choisissez un salon de votre région qui accueille les autoédités, et demandez avant de réserver le coût du stand, le public attendu et qui vend les livres. Faites imprimer vos exemplaires en nombre plutôt qu'à l'unité.",
+  if (v.local === "oui" && ed) steps.push({titre:"Participer à des salons", texte:"Demandez à votre éditeur à quels salons il tient un stand et s'il peut vous y accueillir. Sinon, beaucoup de salons acceptent les auteurs publiés à titre individuel. Renseignez-vous sur ceux de votre région et de votre genre.",
+    meta:["vos frais de déplacement, parfois un stand","un week-end, plus la préparation","immédiat, local"]});
+  if (v.local === "oui" && !ed && v.budget !== "0") steps.push({titre:"Faire un premier salon", texte:"Choisissez un salon de votre région qui accueille les autoédités, et demandez avant de réserver le coût du stand, le public attendu et qui vend les livres. Faites imprimer vos exemplaires en nombre plutôt qu'à l'unité.",
     meta:["de quelques dizaines à quelques centaines d'euros","un week-end, plus la préparation","immédiat, local"]});
 
-  if (v.sortie === "ancien") steps.push({titre:"Saisir un moment pour relancer le livre", texte:"Une saison qui correspond à votre genre, les fêtes de fin d'année, une actualité liée à votre sujet, un salon : chaque moment est une raison nouvelle d'en parler. Accompagnez-le, si vous le souhaitez, d'une baisse de prix de quelques jours, annoncée à l'avance.",
-    meta:["gratuit, ou une part de vos redevances","faible, si l'on s'y prend tôt","ponctuel"]});
   steps.push({titre:"Ouvrir une liste de lecteurs par courriel", texte: v.serie === "serie"
       ? "Pour une série, c'est l'action la plus rentable à terme : chaque lecteur inscrit sera prévenu du tome suivant. Placez l'adresse d'inscription à la dernière page de chaque livre."
       : "Même pour un livre seul, elle prépare le suivant. Placez l'adresse d'inscription à la dernière page du livre, sur votre site et sur votre réseau.",
@@ -218,9 +219,9 @@ function plan(){
   if (amazon && (v.budget === "300" || v.budget === "plus") && v.vitrine === "oui") steps.push({titre:"Tester la publicité sur Amazon", texte:"Commencez petit, suivez vos campagnes de près, et arrêtez celles qui ne rapportent rien. La publicité amplifie ce qui fonctionne déjà : elle n'est rentable que si la vitrine convertit.",
     meta:["à partir de quelques euros par jour","suivi régulier","immédiat, à surveiller"]});
 
-  if (v.sortie === "ancien") steps.push({titre:"Préparer le livre suivant", texte:"C'est le meilleur moyen de relancer le premier : chaque nouveau livre renvoie des lecteurs vers les précédents. Mentionnez vos autres livres à la fin de chacun, et prévenez votre liste de lecteurs à chaque parution.",
-    meta:["celui du livre","celui de l'écriture","le plus durable de tous"]});
-  steps.push({titre:"Repérer les prix et concours ouverts aux autoédités", texte:"Peu nombreux, mais gratuits ou presque. Vérifiez toujours le règlement, et méfiez-vous des concours dont le prix consiste à vous vendre des prestations.",
+  if (ed) steps.push({titre:"Viser les prix littéraires", texte:"Votre éditeur présente souvent ses livres à certains prix. Demandez-lui lesquels, et signalez-lui ceux de votre région ou de votre genre qu'il ne connaîtrait pas.",
+    meta:["gratuit","faible","rare mais fort"]});
+  else steps.push({titre:"Repérer les prix et concours ouverts aux autoédités", texte:"Peu nombreux, mais gratuits ou presque. Vérifiez toujours le règlement, et méfiez-vous des concours dont le prix consiste à vous vendre des prestations.",
     meta:["gratuit ou quelques euros","faible","rare mais fort"]});
 
   return {v, steps, r};
@@ -241,7 +242,7 @@ function render(){
   h += '<li>Les forums et groupes d\'écrivains rapportent peu de lecteurs, mais beaucoup d\'entraide. N\'y échangez jamais d\'avis entre auteurs : Amazon l\'interdit.</li>';
   if (!r) h += '<li>Avec moins d\'une heure par semaine, mieux vaut vous passer des réseaux sociaux que d\'y être irrégulier.</li>';
   h += '<li>N\'achetez ni avis, ni abonnés, ni « packs de visibilité » qui promettent des ventes.</li></ul></div>';
-  h += '<div class="cta"><p>Chaque étape est détaillée dans le guide « Attirer des lecteurs avec un petit budget », avec les ressources qui l\'accompagnent : liste des chroniqueurs, prix et salons, boîte à outils.</p><a href="'+RESSOURCES+'" target="_blank" rel="noopener">Ouvrir la page Ressources</a></div>';
+  h += '<div class="cta"><p>'+(v.plateforme === "maison" ? 'Le guide « Votre livre sort : ce qui dépend de vous » et le guide « Attirer des lecteurs avec un petit budget » détaillent chacune de ces étapes.' : 'Chaque étape est détaillée dans le guide « Attirer des lecteurs avec un petit budget », avec les ressources qui l\'accompagnent : liste des chroniqueurs, prix et salons, boîte à outils.')+'</p><a href="'+RESSOURCES+'" target="_blank" rel="noopener">Ouvrir la page Ressources</a></div>';
   h += '<div class="nav noprint"><button class="btn ghost" type="button" id="back">Modifier mes réponses</button><button class="btn" type="button" id="print">Imprimer mon plan</button></div></section>';
   $("#app").innerHTML = h;
   $("#back").onclick = () => {
